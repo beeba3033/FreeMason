@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2464145661480640271}
   - component: {fileID: 6421153697049211849}
   - component: {fileID: 8752170536710548349}
-  - component: {fileID: 1776057236151081512}
+  - component: {fileID: 2485391146203511396}
   m_Layer: 0
   m_Name: Banner Default
   m_TagString: Untagged
@@ -99,7 +99,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1776057236151081512
+--- !u!114 &2485391146203511396
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,6 +108,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1525858816261042429}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1fba36a9e0da574a92f29805d684b01, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d3d9ed800b4d2a40b091103da3ea4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

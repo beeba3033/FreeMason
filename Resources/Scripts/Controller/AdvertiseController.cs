@@ -1,19 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 using Freemason.Advertisements.Model;
 
 namespace Freemason.Advertisements.Controller {
-    public class VideoController : MonoBehaviour {
-        private List<Video> _videos;
-        private void Start() {
-            Application.runInBackground = true;    
-        }
+    public class VideoController
+    {
+        private string allVideos = "http://localhost:8080/video/all";
+        private List<AdvertiseVideo> videos;
+
+        public List<AdvertiseVideo> Videos { get => (videos); }
 
         public IEnumerator FindVideos() {
-            UnityWebRequest request = UnityWebRequest.Get("http://localhost:8080/video/all");
+            UnityWebRequest request = UnityWebRequest.Get(allVideos);
             yield return request.SendWebRequest();
             if (request.isNetworkError || request.isHttpError)
             {
@@ -21,13 +23,9 @@ namespace Freemason.Advertisements.Controller {
             }
             else
             {
-                _videos = JsonConvert.DeserializeObject<List<Video>>(request.downloadHandler.text);
+                videos = JsonConvert.DeserializeObject<List<AdvertiseVideo>>(request.downloadHandler.text);
             }
         }
-
-        public List<Video> videos {
-            get => (_videos);
-        }
+    
     }
-
 }

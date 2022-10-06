@@ -25,6 +25,12 @@ public class FreeMasonEditor : EditorWindow {
         window.Show();
     }
 
+    [MenuItem("Freemason/Prefabs/Plane")]
+    private static void ShowPrefabs() {
+        var window = GetWindow<FreeMasonEditor>();
+        window.titleContent = new GUIContent("Prefabs");
+        window.Show();
+    }
     private void OnGUI() {
         
     }
