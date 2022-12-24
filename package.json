@@ -5,7 +5,7 @@
   "description": "This is an example package for thesis freemason",
   "unity": "2021.3",
   "unityRelease": "5f1",
-  "type": "tool",
+  "type": "sample",
   "licensesUrl": "https://metrabyte.cloud/",
   "keywords": [
     "advertisement",
