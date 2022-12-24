@@ -1,0 +1,20 @@
+{
+  "name": "com.metrabyte.freemason",
+  "version": "1.0.0",
+  "displayName": "Freemason Ads Player",
+  "description": "This is an example package for thesis freemason",
+  "unity": "2021.3",
+  "unityRelease": "5f1",
+  "type": "tool",
+  "licensesUrl": "https://metrabyte.cloud/",
+  "keywords": [
+    "advertisement",
+    "video player",
+    "freemason"
+  ],
+  "author": {
+    "name": "beeba",
+    "email": "afterlevisp@hotmail.com",
+    "url": "https://www.beeba.ml"
+  }
+}
