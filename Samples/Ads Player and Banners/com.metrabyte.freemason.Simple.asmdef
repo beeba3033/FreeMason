@@ -1,11 +1,11 @@
 {
-    "name": "com.metrabyte.freemason.editor",
+    "name": "com.metrabyte.freemason.Simple",
     "rootNamespace": "",
     "references": [],
-    "includePlatforms": [],
-    "excludePlatforms": [
+    "includePlatforms": [
         "Editor"
     ],
+    "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],

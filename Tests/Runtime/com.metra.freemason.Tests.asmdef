@@ -1,0 +1,21 @@
+{
+    "name": "com.metra.freemason.Tests",
+    "rootNamespace": "",
+    "references": [
+        "GUID:3a2cd55350a99424e929b2acf85512a3",
+        "GUID:0acc523941302664db1f4e527237feb3",
+        "GUID:27619889b8ba8c24980f49ee34dbb44a",
+        "GUID:41e9c2513f1517e468a8f30d7c4ee462"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
