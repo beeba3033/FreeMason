@@ -2,9 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Freemason.Timer.Model;
-using Freemason.Advertisements.Model;
 using Freemason.Advertisements;
+using Freemason.Advertisements.Model;
+using Freemason.Timer.Model;
 
 namespace Freemason.Advertisements.Prefabs {
     public class AdvertisementPrefabs : MonoBehaviour
@@ -12,25 +12,25 @@ namespace Freemason.Advertisements.Prefabs {
         private AdvertisePlayer adPlayer;
         private InformationPrefab information;
         private TimerPrefab timer;
-        private bool isVisibled;
+        private bool isVisible;
 
         public AdvertisePlayer AdPlayer { get => (adPlayer); }
         public InformationPrefab Information { get => (information); }
         public TimerPrefab Timer { get => (timer); }
-        
-        public int groupAdvertise;
 
         private void Awake() {
             Application.runInBackground = true;
         }
 
         private void OnEnable() {
-            isVisibled = false;
+            isVisible = false;
+            TimeSpan currentTime = new TimeSpan();
             information = new InformationPrefab(
                 gameObject.GetInstanceID(),
                 gameObject.name,
                 gameObject.transform.position,
-                new TimeSpan()
+                currentTime,
+                currentTime
             );
             adPlayer = new AdvertisePlayer(this);
             timer = new TimerPrefab(this);
@@ -41,57 +41,29 @@ namespace Freemason.Advertisements.Prefabs {
             Advertisements.NotTarget(this);
         }
 
-        void Start()
+        private void Start()
         {
 
         }
 
-        // Update is called once per frame
-        void Update()
+        private void Update()
         {
-            groupAdvertise = information.groupAdvertise;
-            // Debug.Log("[" + gameObject.name + "]: " + isPlaying);
-            if(isVisibled && !timer.isGoing) {
-                // Debug.Log("StartTimer: " + gameObject.name);
-                // timer.BeginTimer();
+            if(isVisible && adPlayer.IsPlaying) {
+                timer.BeginTimer();
             }
-            // test = VideoStreaming.timer.targetsOnVisible;
-            // Debug.Log("isPlaying: " + VideoStreaming.isTimerGoing + " streaming: " + VideoStreaming.isStreaming);
+            information.position = gameObject.transform.position;
+            information.watched = timer.watched;
         }
+
         private void OnBecameVisible() {
-            // Debug.Log("Visble: " + gameObject.name);
-            isVisibled = true;
-            // if(OnTargetVisible() == null)
-            // {
-                // Debug.Log("playing: " + adPlayer.isPlaying);
-                // VideoStreaming.timer.targetsOnVisible.Add(this.gameObject);
-            // }
+            isVisible = true;
+            Advertisements.IsView(this);
         }
 
         private void OnBecameInvisible() {
-            isVisibled = false;
-            // if(OnTargetVisible() == gameObject) {
-                // VideoStreaming.timer.targetsOnVisible.Remove(this.gameObject);
-            // timer.EndTimer();
-            //     UpdateInformation();
-            // }
+            isVisible = false;
+            timer.EndTimer();
         }
-
-        private void TargetStreaming() {
-            // if(OnTarget() == null)
-                // VideoStreaming.targets.Add(this.gameObject);            
-        }
-
-        private void UpdateInformation () {
-            // infoPrefab.instanceId = gameObject.GetInstanceID();
-            // infoPrefab.name = gameObject.name;
-            // infoPrefab.watched = timer.watched;
-            // infoPrefab.Log();
-        }
-
-        // private GameObject OnTarget() =>  VideoStreaming.targets.Find(x => x.GetInstanceID() == gameObject.GetInstanceID());
-
-        // private GameObject OnTargetVisible() => VideoStreaming.timer.targetsOnVisible.Find(x => x.GetInstanceID() == gameObject.GetInstanceID());
     }
 }
 

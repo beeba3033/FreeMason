@@ -5,11 +5,39 @@ using UnityEngine;
 
 namespace Freemason.Advertisements.Model {
 
+    public class AdvertisingVideoModel {
+        public GameAdsModel project { get; set; }
+        public VideoAdsModel video { get; set; }
+    }
+
+    public class GameAdsModel {
+        public int id { get; set; }
+        public string description { get; set; }
+        public string name { get; set; } 
+    }
+
+    public class VideoAdsModel {
+        public int id { get;set;}
+        public string name { get; set; }
+        public string nameAds { get; set; }
+        public string sources { get; set; }
+    }
+
     public class AdvertiseVideo { 
         private int _id;
         private string _name;
         private string _source;
         private double _length;
+
+        public AdvertiseVideo (
+            int videoId,
+            string videoName,
+            string videoSource
+        ) {
+            _id = videoId;
+            _name = videoName;
+            _source = videoSource;
+        }
 
         public int id {
             get => (_id);
@@ -39,17 +67,20 @@ namespace Freemason.Advertisements.Model {
         public string name { get; set; }
         public Vector3 position;
         public TimeSpan watched { get;set; }
+        public TimeSpan lastest { get;set; }
 
         public InformationPrefab (
             int _intanceId,
             string _name,
             Vector3 _position,
-            TimeSpan _watched
+            TimeSpan _watched,
+            TimeSpan _lastest
         ) {
             instanceId = _intanceId;
             name = _name;
             position = _position;
             watched = _watched;
+            lastest = _lastest;
             groupAdvertise = 0;
         }
 

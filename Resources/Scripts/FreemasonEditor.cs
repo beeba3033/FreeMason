@@ -3,35 +3,66 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+[System.Serializable]
+[CanEditMultipleObjects]
 public class FreeMasonEditor : EditorWindow {
 
-    [MenuItem("Freemason/Toolkit/Banner")]
-    [MenuItem("Freemason/Toolkit/Camera/Detection Banner")]
-    [MenuItem("Freemason/Toolkit/Camera/Timer")]
-    [MenuItem("Freemason/Toolkit/Streaming/Image")]
-    [MenuItem("Freemason/Toolkit/Streaming/Video")]
-    private static void ShowToolkit() {
-        var window = GetWindow<FreeMasonEditor>();
-        window.titleContent = new GUIContent("Toolkit");
-        window.Show();
+    [MenuItem("Freemason/Sign in")]
+    private static void SignIn() {
+
     }
 
-    [MenuItem("Freemason/Example/First Time")]
-    [MenuItem("Freemason/Example/Version 1.0")]
-    [MenuItem("Freemason/Example/Version 1.1.2")]
-    private static void ShowWindow() {
-        var window = GetWindow<FreeMasonEditor>();
-        window.titleContent = new GUIContent("Example");
-        window.Show();
+    [MenuItem("Freemason/Projects")]
+    private static void ShowWindow  () {
+        var projects = GetWindow<FreeMasonEditor>();
+        projects.titleContent = new GUIContent("Projects");
+        projects.Show();
     }
 
-    [MenuItem("Freemason/Prefabs/Plane")]
-    private static void ShowPrefabs() {
-        var window = GetWindow<FreeMasonEditor>();
-        window.titleContent = new GUIContent("Prefabs");
-        window.Show();
-    }
     private void OnGUI() {
-        
+        GUI.backgroundColor = Color.red;
+        Projects.Id = EditorGUILayout.TextField("ID",Projects.Id);
+        Projects.Name = EditorGUILayout.TextField("Name",Projects.Name);
+
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Reset form project.",EditorStyles.boldLabel);
+        if(GUILayout.Button("Reset" , GUILayout.Width(100), GUILayout.Height(30))) {
+            Projects.Id = "0x2c4";
+            Projects.Name = "Beeba";
+        }
+        EditorGUILayout.EndHorizontal();
+    }
+}
+
+public class Projects {
+    public static string Id {
+        get {
+            #if UNITY_EDITOR
+            return EditorPrefs.GetString("ID","0x2c4");
+            #else
+            return false;
+            #endif
+        }
+        set {
+            #if UNITY_EDITOR
+            EditorPrefs.SetString("ID",value);
+            #endif
+        }
+    }
+
+    public static string Name {
+        get {
+            #if UNITY_EDITOR
+            return EditorPrefs.GetString("Name","Beeba");
+            #else
+            return false;
+            #endif
+        }
+        set {
+            #if UNITY_EDITOR
+            EditorPrefs.SetString("Name",value);
+            #endif
+        }
     }
 }
