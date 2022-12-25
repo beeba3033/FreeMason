@@ -66,7 +66,7 @@ namespace Freemason.Prefabs.Controller {
             string json = JsonConvert.SerializeObject(arrayForms);
             JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings();
             string microsoftJson = JsonConvert.SerializeObject(arrayForms, microsoftDateFormatSettings);            
-            string url = ("http://localhost:8080/plugin/project/"+ projectRepository +"/objects/save");
+            string url = ("https://server.beeba.ml/plugin/project/"+ projectRepository +"/objects/save");
             UnityWebRequest request = new UnityWebRequest();
             request.url = url;
             request.method = UnityWebRequest.kHttpVerbPOST;  
